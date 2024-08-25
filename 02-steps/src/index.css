@@ -8,6 +8,7 @@ body {
 }
 
 .steps {
+  /* border: 1px solid black; */
   width: 600px;
   background-color: #f7f7f7;
   border-radius: 7px;
