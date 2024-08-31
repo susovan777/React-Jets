@@ -1,4 +1,7 @@
 import { useState } from "react";
+import PersonalForm from "./Components/PersonalForm";
+import AddressForm from "./Components/AddressForm";
+import NavigationButton from "./Components/Button";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -13,7 +16,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <div className="steps">
         {/* steps section */}
         <div className="numbers">
@@ -30,32 +33,28 @@ function App() {
             : "Confirmation"}
         </h2>
         {/* form section */}
-        <form className="myForm">
-          <label>Name</label>
-          <input type="text" />
-          <label>Email</label>
-          <input type="email" />
-          <label>Phone</label>
-          <input type="number" />
-        </form>
+        {step === 1 ? <PersonalForm /> : step === 2 ? <AddressForm /> : ""}
 
         {/* navigation button */}
         <div className="buttons">
-          <button
-            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            onClick={handlePrevious}
-          >
-            Previous
-          </button>
-          <button
-            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            onClick={handleNext}
-          >
-            Next
-          </button>
+          {step === 1 ? (
+            <NavigationButton value="Next" clickEvent={handleNext} />
+          ) : step === 2 ? (
+            <>
+              <NavigationButton value="Previous" clickEvent={handlePrevious} />
+              <NavigationButton value="Next" clickEvent={handleNext} />
+            </>
+          ) : step === 3 ? (
+            <>
+              <NavigationButton value="Previous" clickEvent={handlePrevious} />
+              <NavigationButton value="Submit" clickEvent={handleNext} />
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
