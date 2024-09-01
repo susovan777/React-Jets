@@ -5,6 +5,21 @@ import NavigationButton from "./Components/Button";
 
 function App() {
   const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zipCode: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handlePrevious = () => {
     // if step is 1 then don't use prev button
@@ -12,7 +27,9 @@ function App() {
   };
   const handleNext = () => {
     // if step is 3 then don't use next button
+    localStorage.setItem("formData", JSON.stringify(formData));
     if (step < 3) setStep((prev) => prev + 1);
+    console.log(formData);
   };
 
   return (
@@ -33,7 +50,38 @@ function App() {
             : "Confirmation"}
         </h2>
         {/* form section */}
-        {step === 1 ? <PersonalForm /> : step === 2 ? <AddressForm /> : ""}
+        {step === 1 ? (
+          <PersonalForm formData={formData} changeEvent={handleChange} />
+        ) : step === 2 ? (
+          <AddressForm formData={formData} changeEvent={handleChange} />
+        ) : (
+          <>
+            <p>
+              <strong>Name:</strong> {formData.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {formData.email}
+            </p>
+            <p>
+              <strong>Phone:</strong> {formData.phone}
+            </p>
+            <p>
+              <strong>Address Line 1:</strong> {formData.address1}
+            </p>
+            <p>
+              <strong>Address Line 2:</strong> {formData.address2}
+            </p>
+            <p>
+              <strong>City:</strong> {formData.city}
+            </p>
+            <p>
+              <strong>State:</strong> {formData.state}
+            </p>
+            <p>
+              <strong>ZIP Code:</strong> {formData.zipCode}
+            </p>
+          </>
+        )}
 
         {/* navigation button */}
         <div className="buttons">
