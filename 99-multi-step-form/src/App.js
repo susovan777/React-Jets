@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PersonalForm from "./Components/PersonalForm";
 import AddressForm from "./Components/AddressForm";
 import NavigationButton from "./Components/Button";
+import Confirmation from "./Components/Confirmation";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -13,23 +14,98 @@ function App() {
     address2: "",
     city: "",
     state: "",
+    country: "",
     zipCode: "",
   });
+  const [errors, setErrors] = useState({});
+  // const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("formData");
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+  }, []);
+
+  // 👇 if formData is updated then add items to localStorage
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePrevious = () => {
-    // if step is 1 then don't use prev button
-    if (step > 1) setStep((prev) => prev - 1);
+  const handleBack = () => {
+    setStep((prev) => prev - 1);
   };
   const handleNext = () => {
-    // if step is 3 then don't use next button
-    localStorage.setItem("formData", JSON.stringify(formData));
-    if (step < 3) setStep((prev) => prev + 1);
-    console.log(formData);
+    if (validation()) {
+      setStep((prev) => prev + 1);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validation()) {
+      // setIsSubmitted(true);
+      alert("Form Submitted! 🙂");
+      console.log("Form Submitted", formData);
+    }
+  };
+
+  // validation for step 1 & step 2
+  const validation = () => {
+    const stepErrors = {};
+    switch (step) {
+      case 1:
+        if (!formData.name) stepErrors.name = "Name is required";
+        if (!formData.email) stepErrors.email = "Email is required";
+        else if (!/\S+@\S+\.\S+/.test(formData.email))
+          stepErrors.email = "Email is invalid";
+        if (!formData.phone) stepErrors.phone = "Phone is required";
+        break;
+      case 2:
+        if (!formData.address1)
+          stepErrors.address1 = "Address Line is required";
+        if (!formData.city) stepErrors.city = "City is required";
+        if (!formData.state) stepErrors.state = "State is required";
+        if (!formData.country) stepErrors.country = "Country is required";
+        if (!formData.zipCode) stepErrors.zipCode = "ZIP Code is required";
+        break;
+      default:
+        break;
+    }
+
+    setErrors(stepErrors);
+    return Object.keys(stepErrors).length === 0;
+  };
+
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <PersonalForm
+            formData={formData}
+            changeEvent={handleChange}
+            errors={errors}
+          />
+        );
+      case 2:
+        return (
+          <AddressForm
+            formData={formData}
+            changeEvent={handleChange}
+            errors={errors}
+          />
+        );
+      case 3:
+        return <Confirmation formData={formData} />;
+
+      default:
+        return null;
+    }
   };
 
   return (
@@ -49,56 +125,20 @@ function App() {
             ? "Address Information"
             : "Confirmation"}
         </h2>
+
         {/* form section */}
-        {step === 1 ? (
-          <PersonalForm formData={formData} changeEvent={handleChange} />
-        ) : step === 2 ? (
-          <AddressForm formData={formData} changeEvent={handleChange} />
-        ) : (
-          <>
-            <p>
-              <strong>Name:</strong> {formData.name}
-            </p>
-            <p>
-              <strong>Email:</strong> {formData.email}
-            </p>
-            <p>
-              <strong>Phone:</strong> {formData.phone}
-            </p>
-            <p>
-              <strong>Address Line 1:</strong> {formData.address1}
-            </p>
-            <p>
-              <strong>Address Line 2:</strong> {formData.address2}
-            </p>
-            <p>
-              <strong>City:</strong> {formData.city}
-            </p>
-            <p>
-              <strong>State:</strong> {formData.state}
-            </p>
-            <p>
-              <strong>ZIP Code:</strong> {formData.zipCode}
-            </p>
-          </>
-        )}
+        {renderStep()}
 
         {/* navigation button */}
         <div className="buttons">
-          {step === 1 ? (
+          {step > 1 && (
+            <NavigationButton value="Back" clickEvent={handleBack} />
+          )}
+          {step < 3 && (
             <NavigationButton value="Next" clickEvent={handleNext} />
-          ) : step === 2 ? (
-            <>
-              <NavigationButton value="Previous" clickEvent={handlePrevious} />
-              <NavigationButton value="Next" clickEvent={handleNext} />
-            </>
-          ) : step === 3 ? (
-            <>
-              <NavigationButton value="Previous" clickEvent={handlePrevious} />
-              <NavigationButton value="Submit" clickEvent={handleNext} />
-            </>
-          ) : (
-            ""
+          )}
+          {step === 3 && (
+            <NavigationButton value="Submit" clickEvent={handleSubmit} />
           )}
         </div>
       </div>

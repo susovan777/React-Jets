@@ -65,6 +65,12 @@ input {
   outline: none;
 }
 
+.errorMsg {
+  margin: 0;
+  color: red;
+  font-size: 12px;
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -78,4 +84,13 @@ button {
   padding: 10px 15px;
   min-width: 110px;
   cursor: pointer;
+}
+
+.success {
+  width: 500px;
+  background-color: #fffffb;
+  border-radius: 5px;
+  margin: 50px auto;
+  padding: 25px 100px;
+  box-shadow: 0px 10px 60px 0px #5c63692b;
 }

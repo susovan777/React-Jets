@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddressForm = ({ formData, changeEvent }) => {
+const AddressForm = ({ formData, changeEvent, errors }) => {
   return (
     <form className="myForm">
       <label>Address Line 1</label>
@@ -11,6 +11,7 @@ const AddressForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.address1 && <p className="errorMsg">{errors.address1}</p>}
       <label>Address Line 2</label>
       <input
         type="text"
@@ -18,6 +19,7 @@ const AddressForm = ({ formData, changeEvent }) => {
         value={formData.address2}
         onChange={changeEvent}
       />
+      {errors.address2 && <p className="errorMsg">{errors.address2}</p>}
       <label>City</label>
       <input
         type="text"
@@ -26,6 +28,7 @@ const AddressForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.city && <p className="errorMsg">{errors.city}</p>}
       <label>State</label>
       <input
         type="text"
@@ -34,6 +37,16 @@ const AddressForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.state && <p className="errorMsg">{errors.state}</p>}
+      <label>Country</label>
+      <input
+        type="text"
+        name="country"
+        value={formData.country}
+        onChange={changeEvent}
+        required
+      />
+      {errors.country && <p className="errorMsg">{errors.country}</p>}
       <label>Zip Code</label>
       <input
         type="number"
@@ -42,6 +55,7 @@ const AddressForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.zipCode && <p className="errorMsg">{errors.zipCode}</p>}
     </form>
   );
 };

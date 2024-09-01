@@ -1,6 +1,6 @@
 import React from "react";
 
-const PersonalForm = ({ formData, changeEvent }) => {
+const PersonalForm = ({ formData, changeEvent, errors }) => {
   return (
     <form className="myForm">
       <label>Name</label>
@@ -11,6 +11,7 @@ const PersonalForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.name && <p className="errorMsg">{errors.name}</p>}
       <label>Email</label>
       <input
         type="email"
@@ -19,6 +20,7 @@ const PersonalForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.email && <p className="errorMsg">{errors.email}</p>}
       <label>Phone</label>
       <input
         type="number"
@@ -27,6 +29,7 @@ const PersonalForm = ({ formData, changeEvent }) => {
         onChange={changeEvent}
         required
       />
+      {errors.phone && <p className="errorMsg">{errors.phone}</p>}
     </form>
   );
 };
