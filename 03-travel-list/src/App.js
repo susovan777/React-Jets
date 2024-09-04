@@ -1,4 +1,3 @@
-import "./App.css";
 
 function App() {
   return <div className="App">
@@ -15,19 +14,19 @@ const Logo = () => {
 
 const Form = () => {
   return (
-    <div>
+    <div className="add-form">
       <h3>What do you need fro your trip? </h3>
     </div>
   );
 };
 
 const PackingList = () => {
-  return <div>LIST</div>;
+  return <div className="list">LIST</div>;
 };
 
 const Stats = () => {
   return (
-    <footer>
+    <footer className="stats">
       <em>You have X items on your list, and you already packed X (X%)</em>
     </footer>
   );
