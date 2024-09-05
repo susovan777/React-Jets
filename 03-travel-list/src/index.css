@@ -36,12 +36,62 @@ h1 {
 
   display: flex;
   justify-content: center;
+  gap: 0.8rem;
+}
+
+h3 {
+  margin-right: 2.5rem;
+  font-size: 1.5rem;
+}
+
+button,
+select,
+input {
+  background-color: #ffebb3;
+  color: #5a3e2b;
+  border: none;
+  border-radius: 10rem;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.add-form button {
+  background-color: #76c7ad;
 }
 
 .list {
   background-color: #5a3e2b;
   color: #ffebb3;
   padding: 4rem 0;
+
+  display: flex;
+  /* flex-direction: column; */
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.list ul {
+  list-style-type: none;
+  width: 80%;
+  /* overflow: scroll; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  /* align-content: start; */
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+}
+
+.list li button {
+  background: none;
+  cursor: pointer;
 }
 
 .stats {
