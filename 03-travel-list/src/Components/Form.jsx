@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 
-const Form = () => {
+const Form = ({ onAddItems }) => {
   const [entry, setEntry] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!entry) return; // ❌ if no description then return nothing
+
     const newItem = { quantity, entry, packed: false, id: Date.now() };
     console.log(newItem);
+
+    onAddItems(newItem);
+
+    setEntry("");
+    setQuantity(1);
   };
+
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your trip? </h3>

@@ -15,11 +15,11 @@ const itemData = [
   },
 ];
 
-const PackingList = () => {
+const PackingList = ({ items }) => {
   return (
     <div className="list">
       <ul>
-        {itemData.map((item) => {
+        {items.map((item) => {
           return <Item key={item.id} item={item} />;
         })}
       </ul>
@@ -31,7 +31,7 @@ const Item = ({ item }) => {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
-        {item.quantity} {item.description}
+        {item.quantity} {item.entry}
       </span>{" "}
       <button>❌</button>
     </li>
