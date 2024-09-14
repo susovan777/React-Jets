@@ -6,17 +6,34 @@ import { useState } from "react";
 
 function App() {
   const [items, setItems] = useState([]);
+  // const [isChecked, setIsChecked] = useState(false);
 
   const handleAddItem = (item) => {
-    setItems(items => [...items, item])
+    setItems((items) => [...items, item]);
   };
 
-  console.log(items);
+  const handleDeleteItem = (id) => {
+    setItems((items) => items.filter((item) => item.id !== id));
+  };
+
+  const handleCheck = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
+
+  // console.log(items);
   return (
     <div className="App">
       <Logo />
       <Form onAddItems={handleAddItem} />
-      <PackingList items={items} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        checkEvent={handleCheck}
+      />
       <Stats />
     </div>
   );

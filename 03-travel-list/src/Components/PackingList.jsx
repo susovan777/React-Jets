@@ -1,5 +1,43 @@
 import React from "react";
 
+const PackingList = ({ items, onDeleteItem, checkEvent }) => {
+  return (
+    <div className="list">
+      <ul>
+        {items.map((item) => {
+          return (
+            <Item
+              key={item.id}
+              item={item}
+              deleteItem={onDeleteItem}
+              checkEvent={checkEvent}
+            />
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+const Item = ({ item, deleteItem, checkEvent }) => {
+  return (
+    <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => checkEvent(item.id)}
+      />
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.entry}
+      </span>{" "}
+      <button onClick={() => deleteItem(item.id)}>❌</button>
+    </li>
+  );
+};
+
+export default PackingList;
+
+/* 
 const itemData = [
   {
     id: 1,
@@ -14,28 +52,4 @@ const itemData = [
     packed: false,
   },
 ];
-
-const PackingList = ({ items }) => {
-  return (
-    <div className="list">
-      <ul>
-        {items.map((item) => {
-          return <Item key={item.id} item={item} />;
-        })}
-      </ul>
-    </div>
-  );
-};
-
-const Item = ({ item }) => {
-  return (
-    <li>
-      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
-        {item.quantity} {item.entry}
-      </span>{" "}
-      <button>❌</button>
-    </li>
-  );
-};
-
-export default PackingList;
+ */
