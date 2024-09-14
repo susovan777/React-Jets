@@ -34,7 +34,7 @@ function App() {
         onDeleteItem={handleDeleteItem}
         checkEvent={handleCheck}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }

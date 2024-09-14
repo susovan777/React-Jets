@@ -8,7 +8,7 @@
 
 body {
   font-family: "Quicksand", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #5a3e2b;
 }
 
@@ -36,12 +36,13 @@ h1 {
 
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.8rem;
 }
 
 h3 {
   margin-right: 2.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 button,
@@ -89,8 +90,8 @@ input {
 
 input[type="checkbox"] {
   margin-right: 10px;
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   accent-color: #e5771f; /* chnages the checkbox background color */
 }
 
