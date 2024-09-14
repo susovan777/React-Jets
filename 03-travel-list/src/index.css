@@ -69,8 +69,9 @@ input {
   padding: 4rem 3rem;
 
   display: flex;
-  justify-content: center;
-  align-items: start;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .list ul {
@@ -98,6 +99,14 @@ input[type="checkbox"] {
 .list li button {
   background: none;
   cursor: pointer;
+}
+
+.actions select,
+.actions button {
+  margin: 0 10px;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.5rem;
+  text-transform: uppercase;
 }
 
 .stats {

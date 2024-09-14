@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function App() {
   const [items, setItems] = useState([]);
-  // const [isChecked, setIsChecked] = useState(false);
 
   const handleAddItem = (item) => {
     setItems((items) => [...items, item]);
@@ -24,6 +23,11 @@ function App() {
     );
   };
 
+  const handleClearItems = () => {
+    const confirmed = window.confirm("Are you sure you want to delete all the items?");
+    if (confirmed) setItems([]);
+  };
+
   // console.log(items);
   return (
     <div className="App">
@@ -33,6 +37,7 @@ function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         checkEvent={handleCheck}
+        clearEvent={handleClearItems}
       />
       <Stats items={items} />
     </div>

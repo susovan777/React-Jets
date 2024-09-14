@@ -1,9 +1,19 @@
 import React from "react";
 
 const Stats = ({ items }) => {
+  if (!items.length)
+    return (
+      <em className="stats">
+        Start adding some items to your packing list! 🚀
+      </em>
+    );
+
   const itemCount = items.length;
   const packedCount = items.filter((item) => item.packed).length;
-  const percentPacked = Math.round((packedCount / itemCount) * 100);
+  const percentPacked = itemCount
+    ? Math.round((packedCount / itemCount) * 100)
+    : 0;
+
   return (
     <footer className="stats">
       <em>
