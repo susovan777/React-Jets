@@ -1,6 +1,13 @@
+import { useState } from "react";
 import Button from "./Button";
 
-const Friend = ({ friend }) => {
+const Friend = ({ friend, onSelectEvent, selectedFriend }) => {
+  const [isSelected, setIsSelected] = useState(false);
+
+  const controlFriendSelect = () => {
+    onSelectEvent(friend);
+    setIsSelected((prev) => !prev);
+  };
   return (
     <li>
       <img src={friend.image} alt="" />
@@ -18,7 +25,9 @@ const Friend = ({ friend }) => {
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
 
-      <Button>Select</Button>
+      <Button clickEvent={controlFriendSelect}>
+        {selectedFriend === friend.name ? "Close" : "Select"}
+      </Button>
     </li>
   );
 };
