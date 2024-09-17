@@ -1,8 +1,7 @@
-import initialFriends from "../Data";
+// import initialFriends from "../Data";
 import Friend from "./Friend";
 
-const FriendList = () => {
-  const friends = initialFriends;
+const FriendList = ({ friends }) => {
   return (
     <ul>
       {friends.map((friend) => (
