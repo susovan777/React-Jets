@@ -1,15 +1,12 @@
-import { useState } from "react";
 import Button from "./Button";
 
 const Friend = ({ friend, onSelectEvent, selectedFriend }) => {
-  const [isSelected, setIsSelected] = useState(false);
 
   const controlFriendSelect = () => {
     onSelectEvent(friend);
-    setIsSelected((prev) => !prev);
   };
   return (
-    <li>
+    <li className={selectedFriend === friend.name ? "selected" : ""}>
       <img src={friend.image} alt="" />
       <h3>{friend.name}</h3>
 

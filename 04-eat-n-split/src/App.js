@@ -33,12 +33,12 @@ function App() {
           selectedFriend={selectedFriend}
           selectFriendHandler={handleFriendSelect}
         />
-        {showAddFriend && (
+        {showAddFriend && !selectedFriend && (
           <FormAddFriend onSubmitEvent={handleSubmitAddFriendForm} />
         )}
 
         <Button clickEvent={handleShowAddFriend}>
-          {showAddFriend ? "Close" : "Add Friend"}
+          {showAddFriend && !selectedFriend ? "Close" : "Add Friend"}
         </Button>
       </div>
 
