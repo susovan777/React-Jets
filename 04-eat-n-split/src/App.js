@@ -6,7 +6,7 @@ import FriendList from "./Components/FriendList";
 import initialFriends from "./Data";
 
 function App() {
-  const [friends, setFriends] = useState([...initialFriends]);
+  const [friends, setFriends] = useState(initialFriends);
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
@@ -20,9 +20,19 @@ function App() {
   };
 
   const handleFriendSelect = (friend) => {
-    if (!selectedFriend) setSelectedFriend(friend.name);
-    else setSelectedFriend(null);
-    console.log(friend.name);
+    setSelectedFriend((current) => (current?.id === friend.id ? null : friend));
+  };
+
+  const handleSplitBill = (value) => {
+    setFriends((friends) =>
+      friends.map((friend) =>
+        friend.id === selectedFriend.id
+          ? { ...friend, balance: friend.balance + value }
+          : friend
+      )
+    );
+
+    console.log(value);
   };
 
   return (
@@ -42,7 +52,12 @@ function App() {
         </Button>
       </div>
 
-      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
+      {selectedFriend && (
+        <FormSplitBill
+          selectedFriend={selectedFriend}
+          onSplitBill={handleSplitBill}
+        />
+      )}
     </div>
   );
 }

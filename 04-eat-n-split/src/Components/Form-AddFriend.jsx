@@ -8,17 +8,18 @@ const FormAddFriend = ({ onSubmitEvent }) => {
   const handleAddFriend = (e) => {
     e.preventDefault();
 
-    const id = crypto.randomUUID();
+    if (name) {
+      const id = crypto.randomUUID();
 
-    const newFriend = {
-      id,
-      name,
-      image: `${image}?u=${id}`,
-      balance: 0,
-    };
-
-    onSubmitEvent(newFriend);
-    console.log(newFriend);
+      const newFriend = {
+        id,
+        name,
+        image: `${image}?u=${id}`,
+        balance: 0,
+      };
+      onSubmitEvent(newFriend);
+      console.log(newFriend);
+    }
   };
 
   return (

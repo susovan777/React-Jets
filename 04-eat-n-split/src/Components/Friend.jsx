@@ -5,6 +5,7 @@ const Friend = ({ friend, onSelectEvent, selectedFriend }) => {
   const controlFriendSelect = () => {
     onSelectEvent(friend);
   };
+  
   return (
     <li className={selectedFriend === friend.name ? "selected" : ""}>
       <img src={friend.image} alt="" />
