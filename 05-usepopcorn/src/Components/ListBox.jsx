@@ -1,7 +1,6 @@
 import { useState } from "react";
-import MovieList from "./MovieList";
 
-const ListBox = () => {
+const Box = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleExpand = () => {
@@ -13,9 +12,9 @@ const ListBox = () => {
       <button className="toggle-btn" onClick={handleExpand}>
         {isOpen ? "-" : "+"}
       </button>
-      <MovieList />
+      {isOpen && children}
     </div>
   );
 };
 
-export default ListBox;
+export default Box;

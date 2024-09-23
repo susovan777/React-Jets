@@ -1,13 +1,10 @@
-import { useState } from "react";
-import { WatchedData } from "../TempData";
 
-const WatchedList = () => {
-  const [watched, setWatched] = useState(WatchedData);
+const WatchedList = ({ watched }) => {
   return (
     <ul className="list">
       {watched.map((movie) => {
         return (
-          <li>
+          <li key={movie.imdbID}>
             <img src={movie.Poster} alt={movie.Title} />
             <h2>{movie.Title}</h2>
             <div>
