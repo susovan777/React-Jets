@@ -18,6 +18,15 @@ function App() {
       </Navbar>
 
       <Main>
+        {/* <Box element={<MovieList movies={movies} />} />
+        <Box
+          element={
+            <>
+              <Summary />
+              <WatchedList watched={watched} />
+            </>
+          }
+        /> */}
         <Box>
           <MovieList movies={movies} />
         </Box>

@@ -5,10 +5,10 @@ const Transaction = () => {
     <div className="section">
       <h3 className="sub-heading">History</h3>
       <ul className="li">
-        <li>
+        <li style={{ borderRight: "5px solid red" }}>
           Cash <span>-₹200</span>
         </li>
-        <li>
+        <li style={{ borderRight: "5px solid green" }}>
           Cash <span>+₹500</span>
         </li>
       </ul>
