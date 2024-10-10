@@ -7,10 +7,20 @@ import Box from "./Components/ListBox";
 import MovieList from "./Components/MovieList";
 import Summary from "./Components/Summary";
 import WatchedList from "./Components/WatchedList";
+import { useEffect } from "react";
 
 function App() {
+  const KEY = "2c82c3be";
+
   const [movies, setMovies] = useState(MovieData);
   const [watched, setWatched] = useState(WatchedData);
+
+  useEffect(() => {
+    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=after`)
+      .then((res) => res.json())
+      .then((data) => console.log(data.Search));
+  }, []);
+
   return (
     <div>
       <Navbar>
