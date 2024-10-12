@@ -185,3 +185,15 @@ html {
   display: flex;
   gap: 0.3rem;
 }
+
+.btn-back {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  font-size: 1.4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  cursor: pointer;
+}

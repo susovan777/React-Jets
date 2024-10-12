@@ -1,21 +1,18 @@
-// import { useState } from "react";
-// import { MovieData } from "../TempData";
-
-const MovieList = ({ movies }) => {
-  
-
+const MovieList = ({ movies, onSelectMovie }) => {
   return (
     <ul className="list">
       {movies.map((movie) => {
-        return <Movie movie={movie} key={movie.imdbID} />;
+        return (
+          <Movie movie={movie} key={movie.imdbID} selectMovie={onSelectMovie} />
+        );
       })}
     </ul>
   );
 };
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, selectMovie }) => {
   return (
-    <li>
+    <li onClick={() => selectMovie(movie.imdbID)}>
       <img src={movie.Poster} alt={movie.Title} />
       <h2>{movie.Title}</h2>
       <p>
