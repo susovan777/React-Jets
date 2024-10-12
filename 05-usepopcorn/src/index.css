@@ -87,7 +87,7 @@ html {
 /* *********************** */
 
 .main {
-  margin: 2rem 6rem;
+  margin: 2rem 10rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
@@ -196,4 +196,42 @@ html {
   padding: 0.5rem 0.7rem;
   border: none;
   cursor: pointer;
+}
+
+header {
+  background-color: var(--color-background-100);
+  border-radius: 0.9rem 0.9rem 0 0;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+header img {
+  height: 20rem;
+  border-top-left-radius: 0.9rem;
+}
+
+.details-overview {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 1.5rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+}
+
+header p,
+section p {
+  font-size: 1.3rem;
+}
+
+.rating {
+  background-color: var(--color-background-100);
+  border-radius: 0.9rem;
+  color: #ad1196;
 }

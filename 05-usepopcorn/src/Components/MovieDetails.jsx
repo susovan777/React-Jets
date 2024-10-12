@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
 
 const MovieDetails = ({ id, clickEvent }) => {
   const [movie, setMovie] = useState({});
@@ -14,17 +15,39 @@ const MovieDetails = ({ id, clickEvent }) => {
       setMovie(data);
       //   console.log(data);
     };
-    
+
     fetchMovie();
-}, [id]);
-console.log(title, year);
+  }, [id]);
 
   return (
     <div className="details">
-      <button className="btn-back" onClick={() => clickEvent()}>
-        &larr;
-      </button>
-      {movie.Title}
+      <header>
+        <button className="btn-back" onClick={() => clickEvent()}>
+          &larr;
+        </button>
+        <img src={movie.Poster} alt={`Poster of ${movie.Title}`} />
+        <div className="details-overview">
+          <h1>{movie.Title}</h1>
+          <p>
+            {movie.Released} &bull; {movie.Runtime}
+          </p>
+          <p>{movie.Genre}</p>
+          <p>
+            <span>⭐</span> {movie.imdbRating} IMDB rating
+          </p>
+        </div>
+      </header>
+
+      <section>
+        <div className="rating">
+          <StarRating maxRating={10} fontSize={25} />
+        </div>
+        <p>
+          <em>{movie.Plot}</em>
+        </p>
+        <p>Starring {movie.Actors}</p>
+        <p>Dirrected by {movie.Director}</p>
+      </section>
     </div>
   );
 };
