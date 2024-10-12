@@ -1,5 +1,4 @@
-
-const WatchedList = ({ watched }) => {
+const WatchedList = ({ watched, handleDelete }) => {
   return (
     <ul className="list">
       {watched.map((movie) => {
@@ -21,6 +20,13 @@ const WatchedList = ({ watched }) => {
                 <span>{movie.runtime} min</span>
               </p>
             </div>
+
+            <button
+              className="delete-btn"
+              onClick={() => handleDelete(movie.imdbID)}
+            >
+              x
+            </button>
           </li>
         );
       })}

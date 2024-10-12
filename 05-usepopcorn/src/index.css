@@ -248,3 +248,15 @@ section p {
   border-radius: 2rem;
   cursor: pointer;
 }
+
+.delete-btn {
+  position: absolute;
+  right: 1.7rem;
+  background-color: var(--color-red-dark);
+  color: var(--color-text);
+  border: none;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0.2rem 0.65rem;
+  cursor: pointer;
+}

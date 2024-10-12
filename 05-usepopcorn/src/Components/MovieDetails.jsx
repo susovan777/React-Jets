@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 
-const MovieDetails = ({ id, handleBack, handleAddMovie, onCloseMovie }) => {
+const MovieDetails = ({
+  id,
+  handleBack,
+  handleAddMovie,
+  onCloseMovie,
+  watched,
+}) => {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
-
-  console.log(userRating);
+  const isWatched = watched.map((movie) => movie.imdbID).includes(id);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -62,15 +67,24 @@ const MovieDetails = ({ id, handleBack, handleAddMovie, onCloseMovie }) => {
 
           <section>
             <div className="rating">
-              <StarRating
-                maxRating={10}
-                fontSize={25}
-                onSetUserRating={setUserRating}
-              />
-              {userRating > 0 && (
-                <button className="add-btn" onClick={() => handleAdd()}>
-                  + Add to list
-                </button>
+              {!isWatched ? (
+                <>
+                  <StarRating
+                    maxRating={10}
+                    fontSize={25}
+                    onSetUserRating={setUserRating}
+                  />
+                  {userRating > 0 && (
+                    <button className="add-btn" onClick={() => handleAdd()}>
+                      + Add to list
+                    </button>
+                  )}
+                </>
+              ) : (
+                <p style={{ margin: "2rem", fontSize: "1.5rem" }}>
+                  You have already rated with{" "}
+                  {watched.find((movie) => movie.imdbID === id).userRating} ⭐️
+                </p>
               )}
             </div>
             <p>

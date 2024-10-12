@@ -67,6 +67,10 @@ function App() {
     setWatched((watched) => [...watched, movie]);
   };
 
+  const handleDelete = (id) => {
+    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
+  };
+
   return (
     <div>
       <Navbar>
@@ -90,11 +94,12 @@ function App() {
               handleBack={onCloseMovie}
               handleAddMovie={handleAddWatched}
               onCloseMovie={onCloseMovie}
+              watched={watched}
             />
           ) : (
             <>
-              <Summary />
-              <WatchedList watched={watched} />
+              <Summary watched={watched} />
+              <WatchedList watched={watched} handleDelete={handleDelete} />
             </>
           )}
         </Box>
