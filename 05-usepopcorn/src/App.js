@@ -11,27 +11,36 @@ import { useEffect } from "react";
 
 function App() {
   const KEY = "2c82c3be";
+  const query = "after";
 
-  const [movies, setMovies] = useState(MovieData);
+  const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(WatchedData);
   const [isLoading, setIsLoading] = useState(false);
-
-  // ⬇️ DATA Fetch using Promises
-  // useEffect(() => {
-  //   fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=after`)
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data.Search));
-  // }, []);
+  const [error, setError] = useState("");
 
   // ⬇️ DATA Fetch using async/await
   useEffect(() => {
     async function fetchData() {
-      setIsLoading(true);
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=after`);
-      const data = await res.json();
-      setMovies(data.Search);
-      console.log(data.Search);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+        );
+
+        const data = await res.json();
+        if (data.Response === "False") {
+          throw new Error("Movie not found!");
+        }
+
+        setMovies(data.Search);
+        setError("");
+        // console.log(data);
+      } catch (err) {
+        console.log(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
     fetchData();
   }, []);
@@ -43,16 +52,11 @@ function App() {
       </Navbar>
 
       <Main>
-        {/* <Box element={<MovieList movies={movies} />} />
-        <Box
-          element={
-            <>
-              <Summary />
-              <WatchedList watched={watched} />
-            </>
-          }
-        /> */}
-        <Box>{isLoading ? <Loader /> : <MovieList movies={movies} />}</Box>
+        <Box>
+          {isLoading && <Loader />}
+          {!isLoading && !error && <MovieList movies={movies} />}
+          {error && <ErrorMessage message={error} />}
+        </Box>
 
         <Box>
           <Summary />
@@ -66,8 +70,13 @@ function App() {
 const Loader = () => {
   return (
     <div className="loader">
-      <p>Loading...</p>
+      <p>Loading... ⌛</p>
     </div>
   );
 };
+
+const ErrorMessage = ({ message }) => {
+  return <p className="error-msg">😔 {message}</p>;
+};
+
 export default App;
