@@ -9,13 +9,14 @@ import Summary from "./Components/Summary";
 import WatchedList from "./Components/WatchedList";
 import Search from "./Components/Nav Components/Search";
 import MovieDetails from "./Components/MovieDetails";
+import Loader from "./Components/Loader";
 
 function App() {
   const KEY = "2c82c3be";
 
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState(WatchedData);
+  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
@@ -62,6 +63,10 @@ function App() {
     setSelectedId(null);
   };
 
+  const handleAddWatched = (movie) => {
+    setWatched((watched) => [...watched, movie]);
+  };
+
   return (
     <div>
       <Navbar>
@@ -80,7 +85,12 @@ function App() {
 
         <Box>
           {selectedId ? (
-            <MovieDetails id={selectedId} clickEvent={onCloseMovie} />
+            <MovieDetails
+              id={selectedId}
+              handleBack={onCloseMovie}
+              handleAddMovie={handleAddWatched}
+              onCloseMovie={onCloseMovie}
+            />
           ) : (
             <>
               <Summary />
@@ -92,14 +102,6 @@ function App() {
     </div>
   );
 }
-
-const Loader = () => {
-  return (
-    <div className="loader">
-      <p>Loading... ⌛</p>
-    </div>
-  );
-};
 
 const ErrorMessage = ({ message }) => {
   return <p className="error-msg">😔 {message}</p>;

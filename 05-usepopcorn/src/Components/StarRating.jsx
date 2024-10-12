@@ -25,9 +25,13 @@ function StarRating({
   color = "#fcc419",
   fontSize = 30,
   message = [],
+  onSetUserRating,
+  userRating,
 }) {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
+
+  if (rating > 0) onSetUserRating(rating);
 
   const rateTextStyle = {
     color: `${color}`,

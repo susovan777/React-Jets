@@ -1,53 +1,87 @@
 import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
+import Loader from "./Loader";
 
-const MovieDetails = ({ id, clickEvent }) => {
+const MovieDetails = ({ id, handleBack, handleAddMovie, onCloseMovie }) => {
   const [movie, setMovie] = useState({});
-  const { Title: title, Year: year } = movie;
+  const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUserRating] = useState(0);
+
+  console.log(userRating);
 
   useEffect(() => {
     const fetchMovie = async () => {
+      setIsLoading(true);
       const res = await fetch(
         `http://www.omdbapi.com/?apikey=2c82c3be&i=${id}`
       );
       const data = await res.json();
 
       setMovie(data);
-      //   console.log(data);
+      setIsLoading(false);
     };
 
     fetchMovie();
   }, [id]);
 
+  const handleAdd = () => {
+    const newWatchedMovie = {
+      imdbID: id,
+      Title: movie.Title,
+      Poster: movie.Poster,
+      imdbRating: movie.imdbRating,
+      userRating: userRating,
+      runtime: Number(movie.Runtime.split(" ").at(0)),
+    };
+
+    handleAddMovie(newWatchedMovie);
+    onCloseMovie();
+  };
   return (
     <div className="details">
-      <header>
-        <button className="btn-back" onClick={() => clickEvent()}>
-          &larr;
-        </button>
-        <img src={movie.Poster} alt={`Poster of ${movie.Title}`} />
-        <div className="details-overview">
-          <h1>{movie.Title}</h1>
-          <p>
-            {movie.Released} &bull; {movie.Runtime}
-          </p>
-          <p>{movie.Genre}</p>
-          <p>
-            <span>⭐</span> {movie.imdbRating} IMDB rating
-          </p>
-        </div>
-      </header>
+      <button className="btn-back" onClick={() => handleBack()}>
+        &larr;
+      </button>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <header>
+            <img src={movie.Poster} alt={`Poster of ${movie.Title}`} />
+            <div className="details-overview">
+              <h1>{movie.Title}</h1>
+              <p>
+                {movie.Released} &bull; {movie.Runtime}
+              </p>
+              <p>{movie.Genre}</p>
+              <p>
+                <span>⭐</span> {movie.imdbRating} IMDb rating
+              </p>
+            </div>
+          </header>
 
-      <section>
-        <div className="rating">
-          <StarRating maxRating={10} fontSize={25} />
-        </div>
-        <p>
-          <em>{movie.Plot}</em>
-        </p>
-        <p>Starring {movie.Actors}</p>
-        <p>Dirrected by {movie.Director}</p>
-      </section>
+          <section>
+            <div className="rating">
+              <StarRating
+                maxRating={10}
+                fontSize={25}
+                onSetUserRating={setUserRating}
+              />
+              {userRating > 0 && (
+                <button className="add-btn" onClick={() => handleAdd()}>
+                  + Add to list
+                </button>
+              )}
+            </div>
+            <p>
+              <em>{movie.Plot}</em>
+            </p>
+            <p>Starring {movie.Actors}</p>
+            <p>Dirrected by {movie.Director}</p>
+            <p>Available in {movie.Language}</p>
+          </section>
+        </>
+      )}
     </div>
   );
 };
