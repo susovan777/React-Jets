@@ -14,11 +14,26 @@ function App() {
 
   const [movies, setMovies] = useState(MovieData);
   const [watched, setWatched] = useState(WatchedData);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // ⬇️ DATA Fetch using Promises
+  // useEffect(() => {
+  //   fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=after`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data.Search));
+  // }, []);
+
+  // ⬇️ DATA Fetch using async/await
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=after`)
-      .then((res) => res.json())
-      .then((data) => console.log(data.Search));
+    async function fetchData() {
+      setIsLoading(true);
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=after`);
+      const data = await res.json();
+      setMovies(data.Search);
+      console.log(data.Search);
+      setIsLoading(false);
+    }
+    fetchData();
   }, []);
 
   return (
@@ -37,9 +52,7 @@ function App() {
             </>
           }
         /> */}
-        <Box>
-          <MovieList movies={movies} />
-        </Box>
+        <Box>{isLoading ? <Loader /> : <MovieList movies={movies} />}</Box>
 
         <Box>
           <Summary />
@@ -50,4 +63,11 @@ function App() {
   );
 }
 
+const Loader = () => {
+  return (
+    <div className="loader">
+      <p>Loading...</p>
+    </div>
+  );
+};
 export default App;

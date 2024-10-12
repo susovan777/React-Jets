@@ -12,7 +12,8 @@ const Box = ({ children }) => {
       <button className="toggle-btn" onClick={handleExpand}>
         {isOpen ? "-" : "+"}
       </button>
-      {isOpen && children}
+      {/* {isOpen && children} */}
+      {children}
     </div>
   );
 };

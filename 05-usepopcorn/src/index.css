@@ -104,6 +104,12 @@ html {
 
 /* **************************** */
 
+.loader {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 15rem;
+}
+
 .toggle-btn {
   position: absolute;
   top: 0.8rem;

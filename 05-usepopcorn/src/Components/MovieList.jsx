@@ -2,6 +2,8 @@
 // import { MovieData } from "../TempData";
 
 const MovieList = ({ movies }) => {
+  
+
   return (
     <ul className="list">
       {movies.map((movie) => {
