@@ -29,6 +29,17 @@ const MovieDetails = ({
     fetchMovie();
   }, [id]);
 
+  useEffect(() => {
+    if (!movie.Title) return; // preventing undefined status when loading 1st time
+
+    document.title = `Movie | ${movie.Title}`;
+
+    // cleanup function
+    return () => {
+      document.title = "UsePopcorn - Movie Database";
+    };
+  }, [movie.Title]);
+
   const handleAdd = () => {
     const newWatchedMovie = {
       imdbID: id,
@@ -42,6 +53,7 @@ const MovieDetails = ({
     handleAddMovie(newWatchedMovie);
     onCloseMovie();
   };
+
   return (
     <div className="details">
       <button className="btn-back" onClick={() => handleBack()}>
