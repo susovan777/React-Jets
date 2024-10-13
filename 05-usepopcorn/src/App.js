@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MovieData, WatchedData } from "./TempData";
+// import { MovieData, WatchedData } from "./TempData";
 import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import Result from "./Components/Nav Components/Result";
@@ -23,12 +23,15 @@ function App() {
 
   // ⬇️ DATA Fetch using async/await
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchData() {
       try {
         setIsLoading(true);
         setError("");
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+          { signal: controller.signal }
         );
 
         const data = await res.json();
@@ -37,10 +40,13 @@ function App() {
         }
 
         setMovies(data.Search);
+        setError("")
         // console.log(data);
       } catch (err) {
         console.log(err);
         setError(err.message);
+
+        if (err.name !== "AbortError") setError(err.message);
       } finally {
         setIsLoading(false);
       }
@@ -53,6 +59,8 @@ function App() {
     }
 
     fetchData();
+
+    return () => controller.abort();
   }, [query]);
 
   const handleSelectMovie = (id) => {
