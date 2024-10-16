@@ -16,10 +16,14 @@ function App() {
 
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  // const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(() => {
+    const storedValue = localStorage.getItem("watched");
+    return JSON.parse(storedValue);
+  });
 
   // ⬇️ DATA Fetch using async/await
   useEffect(() => {
@@ -40,7 +44,7 @@ function App() {
         }
 
         setMovies(data.Search);
-        setError("")
+        setError("");
         // console.log(data);
       } catch (err) {
         console.log(err);
@@ -78,6 +82,10 @@ function App() {
   const handleDelete = (id) => {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   return (
     <div>
