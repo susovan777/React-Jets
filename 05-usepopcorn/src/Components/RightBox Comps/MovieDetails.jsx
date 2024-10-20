@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 const MovieDetails = ({
   id,

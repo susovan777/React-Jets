@@ -14,7 +14,6 @@ const Search = ({ query, setQuery }) => {
     };
 
     document.addEventListener("keydown", callBack);
-    // inputEl.current.focus();
   }, [setQuery]);
 
   return (

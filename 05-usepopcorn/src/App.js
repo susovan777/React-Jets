@@ -4,11 +4,11 @@ import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import Result from "./Components/Nav Components/Result";
 import Box from "./Components/ListBox";
-import MovieList from "./Components/MovieList";
-import Summary from "./Components/Summary";
-import WatchedList from "./Components/WatchedList";
+import MovieList from "./Components/LeftBox Comps/MovieList";
+import Summary from "./Components/RightBox Comps/Summary";
+import WatchedList from "./Components/RightBox Comps/WatchedList";
 import Search from "./Components/Nav Components/Search";
-import MovieDetails from "./Components/MovieDetails";
+import MovieDetails from "./Components/RightBox Comps/MovieDetails";
 import Loader from "./Components/Loader";
 
 function App() {
