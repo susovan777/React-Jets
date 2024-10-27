@@ -95,18 +95,65 @@ body {
   font-size: 2.3rem;
 }
 
-.start-btn {
+.btn {
   border: 2px solid var(--color-dark);
   background-color: var(--color-dark);
   color: var(--color-light);
-  padding: 1rem 2rem;
-  border-radius: 2.5rem;
   font-size: 1.6rem;
-  margin-top: 2rem;
+  border-radius: 2.5rem;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:not([disabled]):hover {
+  background-color: var(--color-darkest);
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+}
+
+.start-btn {
+  padding: 1rem 2rem;
+  margin-top: 2rem;
 }
 
 .start-btn:hover {
   background-color: var(--color-darkest);
   border: 2px solid var(--color-dark);
+}
+
+/* ................................. */
+
+.question {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.options {
+  margin: 3rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.option-btn {
+  font-size: 1.9rem;
+  padding: 1rem 3rem;
+  text-align: left;
+}
+
+.answer {
+  transform: translateX(2rem);
+}
+
+.correct {
+  background-color: var(--color-theme);
+  border: 2px solid var(--color-theme);
+}
+
+.wrong {
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  color: var(--color-darkest);
 }
