@@ -1,9 +1,9 @@
-import DateCounter from "./Starter Files/DateCounter";
+import Header from "./Components/Header";
 
 function App() {
   return (
     <div className="App">
-      <DateCounter />
+      <Header />
     </div>
   );
 }
