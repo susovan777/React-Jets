@@ -27,7 +27,6 @@ body {
   /* min-height: 100vh; */
   color: var(--color-light);
   background-color: var(--color-darkest);
-  padding: 3.2rem;
 }
 
 .counter {
@@ -42,6 +41,7 @@ body {
 
 /* ............................... */
 .app-header {
+  margin-top: 1rem;
   display: flex;
   gap: 4rem;
   justify-content: center;
@@ -60,7 +60,8 @@ body {
 /* .................... */
 
 .main {
-  margin: 8rem;
+  width: 80rem;
+  margin: 8rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -139,7 +140,7 @@ body {
 }
 
 .options {
-  margin: 3rem 5rem;
+  margin: 3rem auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -149,7 +150,7 @@ body {
   font-size: 1.9rem;
   padding: 1rem 3rem;
   text-align: left;
-  width: 80%;
+  /* width: 80%; */
 }
 
 .option-btn:hover {
