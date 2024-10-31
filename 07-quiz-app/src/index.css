@@ -204,3 +204,18 @@ progress {
   background-color: var(--color-theme);
   border-radius: 100px;
 }
+
+/* ............................ */
+
+.finished {
+  font-size: 2rem;
+  background-color: var(--color-theme);
+  /* color: #343a40; */
+  padding: 1.3rem 7rem;
+  border-radius: 2.5rem;
+}
+
+.high-score {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
