@@ -230,3 +230,7 @@ progress {
   border: 2px solid var(--color-theme);
 }
  
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
