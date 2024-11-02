@@ -219,3 +219,14 @@ progress {
   font-size: 2rem;
   margin-top: 2rem;
 }
+
+.restart-btn {
+  background-color: var(--color-theme);
+  border: 2px solid var(--color-theme);
+  margin-top: 8rem;
+}
+
+.restart-btn:hover {
+  border: 2px solid var(--color-theme);
+}
+ 
