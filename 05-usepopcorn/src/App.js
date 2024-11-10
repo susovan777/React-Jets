@@ -13,17 +13,18 @@ import Loader from "./Components/Loader";
 
 function App() {
   const KEY = "2c82c3be";
+  const storedValue = JSON.parse(localStorage.getItem("watched"));
 
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  // const [watched, setWatched] = useState([]);
-  const [watched, setWatched] = useState(() => {
-    const storedValue = localStorage.getItem("watched");
-    return JSON.parse(storedValue);
-  });
+  const [watched, setWatched] = useState(storedValue);
+  // const [watched, setWatched] = useState(() => {
+  //   const storedValue = localStorage.getItem("watched");
+  //   return JSON.parse(storedValue);
+  // });
 
   // ⬇️ DATA Fetch using async/await
   useEffect(() => {
