@@ -8,11 +8,11 @@
     url("../../public/bg.jpg");
   background-size: cover;
   background-position: center;
-  padding: 2.5rem 5rem;
+  padding: 1rem 5rem;
 }
 
 .homepage section {
-  height: 85%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;

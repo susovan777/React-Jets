@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./homepage.module.css";
 import { Link } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 const Homepage = () => {
   return (
     <main className={styles.homepage}>
+      <Navbar />
       <section>
         <h1>
           You travel the world.
@@ -17,7 +19,9 @@ const Homepage = () => {
           you have wandered the world.
         </h2>
 
-        <Link to="/app" className="cta">Start Tracking Now</Link>
+        <Link to="/app" className="cta">
+          Start Tracking Now
+        </Link>
       </section>
     </main>
   );
