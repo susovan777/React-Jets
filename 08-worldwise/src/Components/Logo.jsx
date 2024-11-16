@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link to="/">
       <img
-        src="../../public/logo.png"
+        src="../../logo.png"
         alt="Worldwise logo"
         className={styles.logo}
       />

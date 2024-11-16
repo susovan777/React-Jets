@@ -3,8 +3,13 @@
   width: calc(50vw - 1rem);
   padding: 2rem 1rem;
   background-color: var(--color-dark--1);
+
   display: flex;
+  /* flex-basis: 50rem; */
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+}
+
+footer {
+  margin-top: auto;
 }
