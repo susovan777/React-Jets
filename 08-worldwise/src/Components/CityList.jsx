@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
 
@@ -19,19 +20,26 @@ const CityList = ({ cities, isLoading }) => {
   return (
     <ul className={styles.citylist}>
       {cities.map((city) => {
-        return <City city={city} key={city.id} />;
+        return <CityItem city={city} key={city.id} />;
       })}
     </ul>
   );
 };
 
-const City = ({ city }) => {
+const CityItem = ({ city }) => {
+  const position = city.position;
+
   return (
-    <li className={styles.city}>
-      <span className={styles.emoji}>{city.emoji}</span>
-      <h3 className={styles.name}>{city.cityName}</h3>
-      <p className={styles.date}>({formatDate(city.date)})</p>
-      <button className={styles.deleteBtn}>&#10006;</button>
+    <li>
+      <Link
+        className={styles.city}
+        to={`${city.id}?lat=${position.lat}&lng=${position.lng}`}
+      >
+        <span className={styles.emoji}>{city.emoji}</span>
+        <h3 className={styles.name}>{city.cityName}</h3>
+        <p className={styles.date}>({formatDate(city.date)})</p>
+        <button className={styles.deleteBtn}>&#10006;</button>
+      </Link>
     </li>
   );
 };

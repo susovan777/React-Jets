@@ -9,6 +9,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import AppLayout from "./Pages/AppLayout";
 import CityList from "./Components/CityList";
 import CounrtyList from "./Components/CountryList";
+import City from "./Components/City";
 
 const BASE_URL = "http://localhost:8000";
 
@@ -33,14 +34,19 @@ const App = () => {
     fetchCities();
   }, []);
 
-  console.log(cities);
-
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <Routes>
         <Route index element={<Homepage />} />
         <Route path="product" element={<Product />} />
         <Route path="pricing" element={<Pricing />} />
+        <Route path="login" element={<Login />} />
+
         <Route path="app" element={<AppLayout />}>
           <Route
             path="cities"
@@ -50,13 +56,14 @@ const App = () => {
             index
             element={<CityList cities={cities} isLoading={loading} />}
           />
+          <Route path="cities/:id" element={<City />} />
           <Route
             path="countries"
             element={<CounrtyList cities={cities} isLoading={loading} />}
           />
           <Route path="form" element={<p>FORM</p>} />
         </Route>
-        <Route path="login" element={<Login />} />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
