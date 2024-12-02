@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
+import { useCities } from "../Contexts/CityContext";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -9,7 +10,9 @@ const formatDate = (date) =>
     year: "numeric",
   }).format(new Date(date));
 
-const CityList = ({ cities, isLoading }) => {
+const CityList = () => {
+  const { cities, isLoading } = useCities();
+
   if (isLoading) return <Spinner />;
 
   if (!cities.length)

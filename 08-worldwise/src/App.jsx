@@ -11,7 +11,7 @@ import CityList from "./Components/CityList";
 import CounrtyList from "./Components/CountryList";
 import City from "./Components/City";
 import Form from "./Components/Form";
-import CitiesProvider from "./Contexts/CityContext";
+import { CitiesProvider } from "./Contexts/CityContext";
 
 const App = () => {
   return (
@@ -30,15 +30,9 @@ const App = () => {
 
           <Route path="app" element={<AppLayout />}>
             <Route index element={<Navigate replace to="cities" />} />
-            <Route
-              path="cities"
-              element={<CityList cities={cities} isLoading={loading} />}
-            />
+            <Route path="cities" element={<CityList />} />
             <Route path="cities/:id" element={<City />} />
-            <Route
-              path="countries"
-              element={<CounrtyList cities={cities} isLoading={loading} />}
-            />
+            <Route path="countries" element={<CounrtyList />} />
             <Route path="form" element={<Form />} />
           </Route>
 

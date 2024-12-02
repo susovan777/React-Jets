@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CitiesContext = createContext();
 
@@ -37,4 +37,14 @@ const CitiesProvider = ({ children }) => {
   );
 };
 
-export default CitiesProvider;
+// 🔥 Custom hook
+const useCities = () => {
+  const context = useContext(CitiesContext);
+
+  if (context === undefined)
+    throw new Error("CitiesContext was used outside CitiesProvider");
+
+  return context;
+};
+
+export { CitiesProvider, useCities };
