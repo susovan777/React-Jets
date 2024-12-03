@@ -30,12 +30,15 @@ const CityList = () => {
 };
 
 const CityItem = ({ city }) => {
+  const { currentCity } = useCities();
   const position = city.position;
 
   return (
     <li>
       <Link
-        className={styles.city}
+        className={`${styles.city} ${
+          city.id === currentCity.id ? styles["cityItem--active"] : ""
+        }`}
         to={`${city.id}?lat=${position.lat}&lng=${position.lng}`}
       >
         <span className={styles.emoji}>{city.emoji}</span>
