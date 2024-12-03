@@ -11,9 +11,9 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 const CityList = () => {
-  const { cities, isLoading } = useCities();
+  const { cities, loading } = useCities();
 
-  if (isLoading) return <Spinner />;
+  if (loading) return <Spinner />;
 
   if (!cities.length)
     return (
