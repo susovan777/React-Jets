@@ -1,11 +1,16 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import styles from "./Map.module.css";
+import { useState } from "react";
+import { useCities } from "../Contexts/CityContext";
 
-// 🚩 My location: lat: 12.978385, long: 77.623645 (Halasuru, Bangalore)
+// 🚩 My location: lat: 12.978385, lng: 77.623645 (Halasuru, Bangalore)
 
 const Map = () => {
+  const { cities } = useCities();
+
   const navigate = useNavigate();
+  const [mapPosition, setMapPosition] = useState([12.978385, 77.623645]);
 
   const [searchParam, setSearchParam] = useSearchParams();
   const lat = searchParam.get("lat");
@@ -14,7 +19,7 @@ const Map = () => {
   return (
     <div className={styles.mapContainer} onClick={() => navigate("form")}>
       <MapContainer
-        center={[51.505, -0.09]}
+        center={mapPosition}
         zoom={13}
         scrollWheelZoom={false}
         className={styles.map}
@@ -23,11 +28,18 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[12.978385, 77.623645]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {cities.map((city) => {
+          return (
+            <Marker
+              position={[city.position.lat, city.position.lng]}
+              key={city.id}
+            >
+              <Popup>
+                <span>{city.emoji}</span> <span>{city.cityName}</span>
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     </div>
   );
