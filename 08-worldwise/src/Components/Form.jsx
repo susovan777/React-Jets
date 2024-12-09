@@ -1,5 +1,6 @@
 import styles from "./Form.module.css";
 import BackButton from "./BackButton";
+import ButtonUI from "./ButtonUI";
 
 const Form = () => {
   return (
@@ -18,7 +19,7 @@ const Form = () => {
       </div>
 
       <div className={styles.btnContainer}>
-        <button>Add</button>
+        <ButtonUI type="primary">Add</ButtonUI>
         <BackButton />
       </div>
     </form>

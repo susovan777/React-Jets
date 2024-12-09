@@ -10,6 +10,8 @@ import {
 import styles from "./Map.module.css";
 import { useEffect, useState } from "react";
 import { useCities } from "../Contexts/CityContext";
+import { useGeolocation } from "../Hooks/useGeolocation";
+import ButtonUI from "./ButtonUI";
 
 // 🚩 My location: lat: 12.978385, lng: 77.623645 (Halasuru, Bangalore)
 
@@ -17,10 +19,14 @@ const Map = () => {
   const { cities } = useCities();
 
   const [mapPosition, setMapPosition] = useState([12.978385, 77.623645]);
-
   const [searchParam] = useSearchParams();
   const mapLat = searchParam.get("lat");
   const mapLng = searchParam.get("lng");
+  const {
+    isLoading: isLoadingPosition,
+    position: geoPOsition,
+    getPosition,
+  } = useGeolocation();
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -28,6 +34,9 @@ const Map = () => {
 
   return (
     <div className={styles.mapContainer}>
+      <ButtonUI type="position" onClick={getPosition}>
+        {isLoadingPosition ? "Loading..." : "Use your position"}
+      </ButtonUI>
       <MapContainer
         center={mapPosition}
         zoom={7}
