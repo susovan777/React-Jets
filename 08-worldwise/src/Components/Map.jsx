@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useCities } from "../Contexts/CityContext";
 import { useGeolocation } from "../Hooks/useGeolocation";
 import ButtonUI from "./ButtonUI";
+import { useUrlPosition } from "../Hooks/useUrlPosition";
 
 // 🚩 My location: lat: 12.978385, lng: 77.623645 (Halasuru, Bangalore)
 
@@ -19,14 +20,12 @@ const Map = () => {
   const { cities } = useCities();
 
   const [mapPosition, setMapPosition] = useState([12.978385, 77.623645]);
-  const [searchParam] = useSearchParams();
-  const mapLat = searchParam.get("lat");
-  const mapLng = searchParam.get("lng");
   const {
     isLoading: isLoadingPosition,
-    position: geoPOsition,
+    position: geoPosition,
     getPosition,
   } = useGeolocation();
+  const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
