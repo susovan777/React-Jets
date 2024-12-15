@@ -37,63 +37,15 @@
       "id": "98443197"
     },
     {
-      "cityName": "Bangalore",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Wonderful 😃",
+      "id": "8178",
+      "cityName": "Paris",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2024-12-15T11:25:32.372Z",
+      "note": "New city! woo hoooo",
       "position": {
-        "lat": 12.978385,
-        "lng": 77.623645
-      },
-      "id": "98443456"
-    },
-    {
-      "cityName": "Kolkata",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Beautiful 🦋",
-      "position": {
-        "lat": 22.572645,
-        "lng": 88.363892
-      },
-      "id": "67443197"
-    },
-    {
-      "id": "c8c1",
-      "cityName": "Mysore",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2024-12-15T06:14:20.169Z",
-      "note": "Mysore",
-      "position": {
-        "lat": "12.371872927817968",
-        "lng": "76.65466902849842"
-      }
-    },
-    {
-      "id": "f2ec",
-      "cityName": "Hyderabad",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2024-12-15T06:40:43.866Z",
-      "note": "Yeue",
-      "position": {
-        "lat": "17.383347163505753",
-        "lng": "78.4761650238986"
-      }
-    },
-    {
-      "id": "4387",
-      "cityName": "Honnali",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2024-12-19T06:41:37.000Z",
-      "note": "Hjhs",
-      "position": {
-        "lat": "14.318643283944443",
-        "lng": "75.83056701494118"
+        "lat": 48.85247991314579,
+        "lng": 2.344956835309833
       }
     }
   ]

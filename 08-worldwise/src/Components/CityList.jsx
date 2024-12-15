@@ -23,15 +23,21 @@ const CityList = () => {
   return (
     <ul className={styles.citylist}>
       {cities.map((city) => {
-        return <CityItem city={city} key={city.id} />;
+        return <CityItem city={city} id={city.id} key={city.id} />;
       })}
     </ul>
   );
 };
 
-const CityItem = ({ city }) => {
-  const { currentCity } = useCities();
+const CityItem = ({ city, id }) => {
+  const { currentCity, deleteCity } = useCities();
   const position = city.position;
+
+  const handleDeleteCity = (e) => {
+    e.preventDefault();
+    deleteCity(id);
+    console.log(`${city.cityName} has been deleted!`);
+  };
 
   return (
     <li>
@@ -44,7 +50,10 @@ const CityItem = ({ city }) => {
         <span className={styles.emoji}>{city.emoji}</span>
         <h3 className={styles.name}>{city.cityName}</h3>
         <p className={styles.date}>({formatDate(city.date)})</p>
-        <button className={styles.deleteBtn}>&#10006;</button>
+        
+        <button className={styles.deleteBtn} onClick={handleDeleteCity}>
+          &#10006;
+        </button>
       </Link>
     </li>
   );

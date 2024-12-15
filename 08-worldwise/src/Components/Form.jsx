@@ -71,6 +71,7 @@ const Form = () => {
 
     await createCity(newCity);
     navigate("/app/cities");
+    console.log(`${newCity.cityName} has been added!`);
   };
 
   if (isLoadingGeoCoding) return <Spinner />;

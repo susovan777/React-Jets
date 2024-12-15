@@ -1,5 +1,5 @@
 .form {
-  width: 70%;
+  width: 50%;
   background-color: var(--color-dark--2);
   padding: 2rem 3rem;
   border-radius: 0.5rem;
@@ -19,6 +19,7 @@
 
 .row input,
 .row textarea {
+  width: 100%;
   border: none;
   outline: none;
   padding: 0.4rem 0.7rem;
