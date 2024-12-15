@@ -1,9 +1,10 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
+import styles from "./Product.module.css"
 
 const Product = () => {
   return (
-    <div>
+    <div className={styles.product}>
       <Navbar />
       Product
     </div>

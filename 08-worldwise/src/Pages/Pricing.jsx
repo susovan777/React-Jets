@@ -1,9 +1,10 @@
-import React from "react";
-import Navbar from "../Components/Navbar";
+import React from 'react';
+import Navbar from '../Components/Navbar';
+import styles from './Pricing.module.css';
 
 const Pricing = () => {
   return (
-    <div>
+    <div className={styles.pricing}>
       <Navbar />
       Pricing Page
     </div>

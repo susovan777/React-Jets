@@ -1,7 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./navbar.module.css";
-import Logo from "./Logo";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './navbar.module.css';
+import Logo from './Logo';
+import ButtonUI from './ButtonUI';
 
 const Navbar = () => {
   return (
@@ -15,7 +16,9 @@ const Navbar = () => {
           <NavLink to="/product">Product</NavLink>
         </li>
         <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/login">
+            <ButtonUI type="primary">Login</ButtonUI>
+          </NavLink>
         </li>
       </ul>
     </nav>

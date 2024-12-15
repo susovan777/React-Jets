@@ -37,15 +37,15 @@
       "id": "98443197"
     },
     {
-      "id": "8178",
-      "cityName": "Paris",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2024-12-15T11:25:32.372Z",
-      "note": "New city! woo hoooo",
+      "id": "d5e0",
+      "cityName": "Hubli",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2024-12-15T14:21:54.541Z",
+      "note": "",
       "position": {
-        "lat": 48.85247991314579,
-        "lng": 2.344956835309833
+        "lat": 15.411915415265353,
+        "lng": 75.1393158621763
       }
     }
   ]
