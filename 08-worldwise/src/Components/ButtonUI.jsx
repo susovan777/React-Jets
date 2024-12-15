@@ -4,10 +4,7 @@ import styles from "./ButtonUI.module.css";
 
 const ButtonUI = ({ children, onClick, type }) => {
   return (
-    <button
-      className={`${styles.btn} ${styles[type]}`}
-      onClick={() => onClick()}
-    >
+    <button className={`${styles.btn} ${styles[type]}`} onClick={onClick}>
       {children}
     </button>
   );
