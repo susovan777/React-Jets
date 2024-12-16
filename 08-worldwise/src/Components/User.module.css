@@ -1,0 +1,35 @@
+.user {
+    width: 23rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: var(--color-dark--1);
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--color-light--3);
+
+    display: flex;
+    /* gap: 2rem; */
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.user img {
+    width: 15%;
+    border-radius: 50%;
+}
+
+.user button {
+    background-color: var(--color-dark--2);
+    font-size: 1rem;
+    font-weight: 600;
+    color: inherit;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
