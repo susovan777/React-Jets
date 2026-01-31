@@ -1,0 +1,20 @@
+.header {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.dashboard {
+  background-color: var(--bg-dashboard);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 25px;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+}
+
+.recent {
+  background-color: var(--bg-dashboard);
+  padding: 20px;
+  border-radius: var(--radius);
+}

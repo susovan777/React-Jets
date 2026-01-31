@@ -1,7 +1,7 @@
 const AverageCard = () => {
   return (
     <div>
-      <h2>Average Completion</h2>
+      <h2>Average Completions</h2>
       <div className="chart">Pie Chart</div>
     </div>
   );

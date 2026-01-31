@@ -1,7 +1,7 @@
 const TopHabitsCard = () => {
   return (
     <div>
-      <h2>Top Habits (last week)</h2>
+      <h2>Top Habits (Last week)</h2>
       <div className="chart">Bar Chart</div>
     </div>
   );

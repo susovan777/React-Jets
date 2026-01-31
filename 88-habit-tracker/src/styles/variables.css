@@ -1,0 +1,16 @@
+:root {
+  --bg-dark: #3f3f3f;
+  --bg-dashboard: #626262;
+  --bg-card: #9B9B9B;
+
+  --text-primary: #ffffff;
+  --text-secondary: #dcdcdc;
+
+  --accent-green: #4caf50;
+  --accent-purple: #9c27b0;
+  --accent-yellow: #fdd835;
+  --accent-red: #f44336;
+
+  --radius: 10px;
+  --shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}

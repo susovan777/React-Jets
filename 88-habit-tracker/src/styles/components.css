@@ -1,0 +1,26 @@
+.card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: var(--accent-green);
+  color: var(--text-primary);
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+button:hover {
+  background-color: #409342;
+}
