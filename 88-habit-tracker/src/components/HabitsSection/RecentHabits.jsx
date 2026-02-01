@@ -4,7 +4,9 @@ const RecentHabits = () => {
   return (
     <div className="recent">
       <h2>Recent Habit Completions</h2>
-      <HabitItem />
+      <ul className="habits">
+        <HabitItem />
+      </ul>
     </div>
   );
 };
