@@ -1,11 +1,13 @@
 import HabitItem from "./HabitItem.jsx";
 
-const RecentHabits = () => {
+const RecentHabits = ({ habitLogs }) => {
   return (
     <div className="recent">
       <h2>Recent Habit Completions</h2>
       <ul className="habits">
-        <HabitItem />
+        {habitLogs.map((item) => (
+          <HabitItem key={item.id} habit={item} />
+        ))}
       </ul>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Form from "../Form/Form.jsx";
 
-const ActionCard = () => {
+const ActionCard = ({ onAdd }) => {
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
@@ -16,7 +16,7 @@ const ActionCard = () => {
       {open && (
         <div className="modal-overlay" onClick={() => setOpen(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <Form title="What Did You Do Today?" setIsOpen={setOpen} />
+            <Form title="What Did You Do Today?" setIsOpen={setOpen} onAdd={onAdd} />
           </div>
         </div>
       )}

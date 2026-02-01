@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = ({ title, setIsOpen }) => {
+const Form = ({ title, setIsOpen, onAdd }) => {
   const [formData, setFormData] = useState({
     date: "",
     habits: [],
@@ -23,19 +23,23 @@ const Form = ({ title, setIsOpen }) => {
       // Handling for date and description
       setFormData((prev) => ({
         ...prev,
+        id: Date.now(),
         [name]: value,
       }));
     }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsOpen(false);
-    console.log(formData);
+    e.preventDefault(); // stop page refresh on submit
+    setIsOpen(false); // close modal
+
+    // update added data to ActionCard -> Dashboard -> App component
+    onAdd(formData);
+    console.log("Form Data", formData);
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h3>{title}</h3>
       <label htmlFor="date">
         Date:{" "}
@@ -49,7 +53,7 @@ const Form = ({ title, setIsOpen }) => {
 
       <label>
         <input
-          name="reading"
+          name="Reading"
           type="checkbox"
           value={formData.habits}
           onChange={handleChange}
@@ -58,7 +62,7 @@ const Form = ({ title, setIsOpen }) => {
       </label>
       <label>
         <input
-          name="exercise"
+          name="Exercise"
           type="checkbox"
           value={formData.habits}
           onChange={handleChange}
@@ -67,7 +71,7 @@ const Form = ({ title, setIsOpen }) => {
       </label>
       <label>
         <input
-          name="meditation"
+          name="Meditation"
           type="checkbox"
           value={formData.habits}
           onChange={handleChange}
@@ -85,8 +89,10 @@ const Form = ({ title, setIsOpen }) => {
       />
 
       <div className="form-buttons">
-        <button className="cancel">Cancel</button>
-        <button className="submit" onClick={handleSubmit}>
+        <button type="button" className="cancel">
+          Cancel
+        </button>
+        <button type="submit" className="submit">
           Submit
         </button>
       </div>

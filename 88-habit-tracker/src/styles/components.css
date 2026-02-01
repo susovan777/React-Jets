@@ -113,7 +113,7 @@ button.cancel:hover {
 .habits {
   background-color: #fff;
   color: black;
-  padding: 20px;
+  padding: 5px 20px;
   border-radius: var(--radius);
 }
 
@@ -121,12 +121,13 @@ button.cancel:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
+  padding: 13px 0;
   border-bottom: 1px solid var(--bg-card);
 }
 
 .habit-category {
   color: var(--bg-card);
+  font-size: 0.9rem;
 }
 
 .habit-action {
@@ -149,6 +150,7 @@ button.cancel:hover {
 
 .edit {
   background: #f4bb4a;
+  font-size: 1.5rem;
 }
 
 .delete {

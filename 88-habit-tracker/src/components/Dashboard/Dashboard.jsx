@@ -2,10 +2,10 @@ import ActionCard from "./ActionCard.jsx";
 import AverageCard from "./AverageCard.jsx";
 import TopHabitsCard from "./TopHabitsCard.jsx";
 
-const Dashboard = () => {
+const Dashboard = ({ onAdd }) => {
   return (
     <section className="dashboard">
-      <ActionCard />
+      <ActionCard onAdd={onAdd} />
       <AverageCard />
       <TopHabitsCard />
     </section>
