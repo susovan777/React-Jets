@@ -110,6 +110,18 @@ button.cancel:hover {
 }
 
 /* Habit List Section */
+.no-habit {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-habit p {
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
 .habits {
   background-color: #fff;
   color: black;

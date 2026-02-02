@@ -15,14 +15,23 @@ const App = () => {
     localStorage.setItem("habitLogs", JSON.stringify(updatedHabit));
   };
 
-  console.log("Saved habits:", logs);
+  const editLog = (id) => {
+    console.log("Editing", id);
+  };
+
+  const deleteLog = (id) => {
+    const updated = logs.filter((i) => i.id !== id);
+    setLogs(updated);
+    localStorage.removeItem("habitLogs", JSON.stringify(updated));
+    console.log("Habit deleted with ID:", id);
+  };
 
   return (
-    <>
+    <div className="app">
       <Header />
       <Dashboard onAdd={addLog} />
-      <RecentHabits habitLogs={logs} />
-    </>
+      <RecentHabits habitLogs={logs} onEdit={editLog} onDelete={deleteLog} />
+    </div>
   );
 };
 

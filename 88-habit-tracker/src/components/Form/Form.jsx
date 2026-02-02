@@ -3,7 +3,7 @@ import { useState } from "react";
 const Form = ({ title, setIsOpen, onAdd }) => {
   const [formData, setFormData] = useState({
     date: "",
-    habits: [],
+    categories: [],
     description: "",
   });
 
@@ -14,10 +14,10 @@ const Form = ({ title, setIsOpen, onAdd }) => {
       // Handling checkbox
       setFormData((prev) => {
         const updateHabits = checked
-          ? [...prev.habits, name]
-          : prev.habits.filter((habit) => habit !== name);
+          ? [...prev.categories, name]
+          : prev.categories.filter((habit) => habit !== name);
 
-        return { ...prev, habits: updateHabits };
+        return { ...prev, categories: updateHabits };
       });
     } else {
       // Handling for date and description
@@ -55,7 +55,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
         <input
           name="Reading"
           type="checkbox"
-          value={formData.habits}
+          value={formData.categories}
           onChange={handleChange}
         />
         Reading
@@ -64,7 +64,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
         <input
           name="Exercise"
           type="checkbox"
-          value={formData.habits}
+          value={formData.categories}
           onChange={handleChange}
         />
         Exercise
@@ -73,7 +73,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
         <input
           name="Meditation"
           type="checkbox"
-          value={formData.habits}
+          value={formData.categories}
           onChange={handleChange}
         />
         Meditation
