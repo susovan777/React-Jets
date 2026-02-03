@@ -1,3 +1,4 @@
+import { CircleAlert } from "lucide-react";
 import HabitItem from "./HabitItem.jsx";
 
 const RecentHabits = ({ habitLogs, onEdit, onDelete }) => {
@@ -18,7 +19,8 @@ const RecentHabits = ({ habitLogs, onEdit, onDelete }) => {
         </ul>
       ) : (
         <div className="no-habit">
-          <p>No habit added. Add habit from the above button.</p>
+          <CircleAlert size={40} />
+          <p>No progress to show.</p>
         </div>
       )}
     </div>

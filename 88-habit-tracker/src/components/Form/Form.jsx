@@ -1,3 +1,4 @@
+import { enqueueSnackbar } from "notistack";
 import { useState } from "react";
 
 const Form = ({ title, setIsOpen, onAdd }) => {
@@ -35,6 +36,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
 
     // update added data to ActionCard -> Dashboard -> App component
     onAdd(formData);
+    enqueueSnackbar("Habit added successfully", { variant: "success" });
     console.log("Form Data", formData);
   };
 
@@ -48,6 +50,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
           type="date"
           value={formData.date}
           onChange={handleChange}
+          required
         />
       </label>
 
@@ -57,6 +60,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
           type="checkbox"
           value={formData.categories}
           onChange={handleChange}
+          required={formData.categories.length === 0}
         />
         Reading
       </label>
@@ -66,6 +70,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
           type="checkbox"
           value={formData.categories}
           onChange={handleChange}
+          required={formData.categories.length === 0}
         />
         Exercise
       </label>
@@ -75,6 +80,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
           type="checkbox"
           value={formData.categories}
           onChange={handleChange}
+          required={formData.categories.length === 0}
         />
         Meditation
       </label>
@@ -86,10 +92,14 @@ const Form = ({ title, setIsOpen, onAdd }) => {
         value={formData.description}
         onChange={handleChange}
         placeholder="Enter a short description"
+        required
       />
 
       <div className="form-buttons">
-        <button type="button" className="cancel">
+        <button
+          type="button"
+          className="cancel"
+          onClick={() => setIsOpen(false)}>
           Cancel
         </button>
         <button type="submit" className="submit">
