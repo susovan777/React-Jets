@@ -1,16 +1,11 @@
-import DisplayChart from "./Chart.jsx";
-import { getWeeklyStats } from "../../utils/stats.js";
+import { DisplayPieChart } from "./Chart.jsx";
 
-const AverageCard = ({ logs }) => {
-  const stats = getWeeklyStats(logs);
-  console.log(logs, stats);
-
+const AverageCard = ({ data }) => {
   return (
     <div>
       <h2>Average Completions</h2>
       <div className="chart">
-        Pie Chart
-        <DisplayChart />
+        <DisplayPieChart data={data} />
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
   return (
     <form onSubmit={handleSubmit}>
       <h3>{title}</h3>
-      <label htmlFor="date">
+      <label>
         Date:{" "}
         <input
           name="date"
@@ -85,7 +85,7 @@ const Form = ({ title, setIsOpen, onAdd }) => {
         Meditation
       </label>
 
-      <label htmlFor="">Short description:</label>
+      <label htmlFor="description">Short description:</label>
       <input
         name="description"
         type="text"
