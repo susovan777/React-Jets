@@ -2,9 +2,9 @@ import { DisplayPieChart } from "./Chart.jsx";
 
 const AverageCard = ({ data }) => {
   return (
-    <div>
+    <div className="average-completion">
       <h2>Average Completions</h2>
-      <div className="chart">
+      <div>
         <DisplayPieChart data={data} />
       </div>
     </div>

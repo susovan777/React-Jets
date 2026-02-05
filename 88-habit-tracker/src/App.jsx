@@ -17,9 +17,7 @@ const App = () => {
     localStorage.setItem("habitLogs", JSON.stringify(updatedHabit));
   };
 
-  const editLog = (id) => {
-    console.log("Editing", id);
-  };
+  
 
   const deleteLog = (id) => {
     const updated = logs.filter((i) => i.id !== id);
@@ -34,7 +32,7 @@ const App = () => {
       <SnackbarProvider />
       <Header />
       <Dashboard logs={logs} onAdd={addLog} />
-      <RecentHabits habitLogs={logs} onEdit={editLog} onDelete={deleteLog} />
+      <RecentHabits habitLogs={logs} onDelete={deleteLog} />
     </div>
   );
 };

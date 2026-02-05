@@ -110,6 +110,14 @@ button.cancel:hover {
   background-color: #cf0000;
 }
 
+/* Average Completion */
+.average-completion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Habit List Section */
 .no-habit {
   flex: 1;
@@ -122,11 +130,23 @@ button.cancel:hover {
   font-size: 0.9rem;
 }
 
-.habits {
+.recent-list {
   background-color: #fff;
+  border-radius: var(--radius);
   color: black;
   padding: 5px 20px;
-  border-radius: var(--radius);
+  overflow-y: auto; /* scroll happens here */
+  padding-right: 8px; /* space for scrollbar */
+}
+
+/* Scrollbar Stylings */
+.recent-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recent-list::-webkit-scrollbar-thumb {
+  background: #2b29294d;
+  border-radius: 10px;
 }
 
 .habit-item {
